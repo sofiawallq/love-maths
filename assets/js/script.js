@@ -15,6 +15,12 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    document.getElementById("answer-box").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    })
+
     runGame("addition");
 
 })
@@ -25,6 +31,9 @@ document.addEventListener("DOMContentLoaded", function() {
  */
 
 function runGame(gameType) {
+
+    document.getElementById("answer-box").value = "";
+    document.getElementById("answer-box").focus();
 
     //Create two random numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25) +1;
@@ -111,7 +120,7 @@ function displayAdditonQuestion(operand1, operand2) {
     document.getElementById('operator').textContent = "+";
 }
 
-function displaySubtractQuestion() {
+function displaySubtractQuestion(operand1, operand2) {
     
     document.getElementById('operand1').textContent = operand1 > operand2 ? operand1 : operand2;
     document.getElementById('operand2').textContent = operand1 > operand2 ? operand2 : operand1;
